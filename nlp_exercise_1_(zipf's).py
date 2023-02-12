@@ -51,10 +51,21 @@ def count_frequency(data):
   freq = Counter(data)
   return freq
 
+# to count the length of each word in the text
+def count_word_length(data):
+  words = []
+  length = []
+  for key in data.keys():
+      words.append(key)
+  for item in words:
+      length.append(len(item))
+  return length
+
 #VISUALIZATION
 # to create data frame
 def dataframe(data):
   df = pd.DataFrame.from_records(list(dict(data).items()), columns=['word','frequency'])
+  df['number of characters'] = length
   df = df.sort_values(by=['frequency'], ascending=False)
   df['rank'] = list(range(1, len(df) + 1))
   return df
@@ -88,6 +99,10 @@ def main():
   print(freq_book_en)
   freq_book_es = count_frequency(word_tokenized_normed_book_es)
   print(freq_book_es)
+  
+  # count the length of each word
+  length_en = count_word_length(freq_book_en)
+  length_es = count_word_length(freq_book_es)
 
   # put data into dataframe
   df_en = dataframe(freq_book_en)
