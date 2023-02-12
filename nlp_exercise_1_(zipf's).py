@@ -70,7 +70,7 @@ def dataframe(data):
   df['rank'] = list(range(1, len(df) + 1))
   return df
 
-# to create chart between rank and frequency of words
+# to create chart between word length and frequency
 def create_chart(data):
   chart = sns.relplot(x="rank", y="frequency", data=data)
   return chart
